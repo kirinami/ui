@@ -2,7 +2,24 @@ const path = require('path');
 const { defineConfig } = require('vite');
 const react = require('@vitejs/plugin-react');
 
+const pkg = require('./package.json');
+
 module.exports = defineConfig({
+  build: {
+    lib: {
+      name: pkg.name,
+      entry: path.resolve(__dirname, 'src/main.ts'),
+      fileName: format => `main.${format}.js`,
+    },
+    rollupOptions: {
+      external: ['react'],
+      output: {
+        globals: {
+          react: 'React',
+        },
+      },
+    },
+  },
   server: {
     host: true,
     port: 4200,
@@ -18,8 +35,8 @@ module.exports = defineConfig({
   },
   resolve: {
     alias: [
-      { find: /^~(.+)/, replacement: path.join(process.cwd(), 'node_modules/$1') },
-      { find: /^@\/(.+)/, replacement: path.join(process.cwd(), 'src/$1') },
+      { find: /^~(.+)/, replacement: path.resolve(__dirname, 'node_modules/$1') },
+      { find: /^@\/(.+)/, replacement: path.resolve(__dirname, 'src/$1') },
     ],
   },
   plugins: [react()],

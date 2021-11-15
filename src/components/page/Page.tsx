@@ -4,7 +4,7 @@ import { Header } from '../header/Header';
 
 import './Page.scss';
 
-interface PageProps {
+export interface PageProps {
   user?: {};
   onLogin: () => void;
   onLogout: () => void;

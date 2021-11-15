@@ -1,19 +1,30 @@
 {
-  "name": "kirinami-ui",
+  "name": "@kirinami/ui",
   "version": "0.0.1",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/main.umd.js",
+  "module": "./dist/main.es.js",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    "./style.css": "./dist/style.css",
+    ".": {
+      "import": "./dist/main.es.js",
+      "require": "./dist/main.umd.js"
+    }
+  },
   "scripts": {
     "sb:start:dev": "start-storybook -p 6006",
     "sb:build": "build-storybook",
-    "build": "tsc && vite build",
+    "build": "rm -rf dist && tsc && vite build && tsc -p tsconfig.d.json -d",
     "start:dev": "vite",
     "start": "vite preview"
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
@@ -21,10 +32,8 @@
     "@tailwindcss/forms": "^0.3.4",
     "@types/node": "^16.11.7",
     "@types/react": "^17.0.34",
-    "@types/react-dom": "^17.0.11",
     "@vitejs/plugin-react": "^1.0.9",
     "autoprefixer": "^10.4.0",
-    "babel-loader": "^8.2.3",
     "postcss": "^8.3.11",
     "sass": "^1.43.4",
     "storybook-builder-vite": "^0.1.6",

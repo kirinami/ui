@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Button.scss';
 
-interface ButtonProps {
+export interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
@@ -39,7 +39,7 @@ export const Button = ({
   return (
     <button
       type="button"
-      className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white cursor-pointer"
+      className="storybook-button--test opacity-10"
       {...props}
     >
       {label}

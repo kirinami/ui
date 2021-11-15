@@ -4,7 +4,7 @@ import { Button } from '../button/Button';
 
 import './Header.scss';
 
-interface HeaderProps {
+export interface HeaderProps {
   user?: {};
   onLogin: () => void;
   onLogout: () => void;
